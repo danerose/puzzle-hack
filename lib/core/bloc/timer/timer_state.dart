@@ -1,4 +1,4 @@
-//Dependencies
+
 import 'package:equatable/equatable.dart';
 
 class TimerState extends Equatable {

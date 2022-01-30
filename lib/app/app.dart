@@ -9,40 +9,108 @@
 //Flutter
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:puzzle_hack/core/bloc/theme/theme_bloc.dart';
-import 'package:puzzle_hack/core/bloc/theme/theme_state.dart';
-import 'package:puzzle_hack/core/bloc/timer/timer_bloc.dart';
-import 'package:puzzle_hack/core/data/models/ticker/ticker_model.dart';
-import 'package:puzzle_hack/core/theme/modes/blue_theme.dart';
+
+
+
 
 //Localizations
 import 'package:puzzle_hack/l10n/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+
+//Theme
+import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/theme/modes/pink_sakura_theme.dart';
+import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/theme/modes/main_sakura_theme.dart';
+import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/theme/modes/main_balls_theme.dart';
+import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/theme/modes/pink_balls_theme.dart';
+
+//Bloc
+import 'package:puzzle_hack/core/bloc/audio/audio_control_bloc.dart';
+
+import 'package:puzzle_hack/core/bloc/puzzle/puzzle_bloc.dart';
+import 'package:puzzle_hack/core/bloc/puzzle/puzzle_event.dart';
+
+import 'package:puzzle_hack/core/bloc/timer/timer_bloc.dart';
+
+import 'package:puzzle_hack/core/bloc/theme/theme_bloc.dart';
+import 'package:puzzle_hack/core/bloc/theme/theme_state.dart';
+
+import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/bloc/theme/sakura_theme_bloc.dart';
+import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/bloc/puzzle/sakura_puzzle_bloc.dart';
+
+import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/bloc/theme/balls_theme_bloc.dart';
+import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/bloc/puzzle/balls_puzzle_bloc.dart';
+
+//Model
+import 'package:puzzle_hack/core/data/models/ticker/ticker_model.dart';
+
 //Views
 import 'package:puzzle_hack/app/flows/home/view/home_view.dart';
 
-class App extends StatelessWidget {
+
+class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
 
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => ThemeBloc(
-            customTheme: const BlueThemeData(),
+          create: (_) => SakuraThemeBloc(
+            themes: const [
+              MainSakuraTheme(),
+              PinkSakuraTheme(),
+            ],
           ),
         ),
         BlocProvider(
-          create:(_) => TimerBloc(
+          create: (_) => BallsThemeBloc(
+            themes: const [
+              MainBallsTheme(),
+              PinkBallsTheme(),
+            ],
+          ),
+        ),
+        BlocProvider(
+          create: (_) => SakuraPuzzleBloc(
+            secondsToBegin: 3,
             ticker: const Ticker(),
+          ),
+        ),
+        BlocProvider(
+          create: (_) => BallsPuzzleBloc(
+            secondsToBegin: 3,
+            ticker: const Ticker(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => ThemeBloc(
+            initialThemes: [
+              context.read<SakuraThemeBloc>().state.theme,
+              context.read<BallsThemeBloc>().state.theme
+            ],
+          ),
+        ),
+        BlocProvider(
+          create: (_) => TimerBloc(
+            ticker: const Ticker(),
+          ),
+        ),
+        BlocProvider(
+          create: (_) => AudioControlBloc(),
+        ),
+        BlocProvider(
+          create: (_) => PuzzleBloc(4)..add(
+            const PuzzleInitialized(shufflePuzzle: false),
           ),
         ),
       ], 
       child: BlocBuilder<ThemeBloc, ThemeState>(
-        buildWhen: (previus, current) => 
-        previus.theme.themeData != current.theme.themeData,
         builder: (BuildContext context,ThemeState state) {
           return MaterialApp(
             theme: state.theme.themeData,

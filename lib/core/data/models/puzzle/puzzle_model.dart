@@ -1,13 +1,10 @@
-//Dart
 import 'dart:ui';
 import 'dart:math';
 
-//Dependencies
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 
-//Models
-import 'package:puzzle_hack/core/data/models/puzzle/tile_model.dart';
+import 'package:puzzle_hack/core/data/models/tile/tile.dart';
 
 // A 3x3 puzzle board visualization:
 //

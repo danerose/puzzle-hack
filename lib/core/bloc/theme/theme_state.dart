@@ -1,25 +1,33 @@
-
+//Dependencies
 import 'package:equatable/equatable.dart';
 
-import 'package:puzzle_hack/core/theme/theme.dart';
-import 'package:puzzle_hack/core/theme/modes/blue_theme.dart';
+//Model
+import 'package:puzzle_hack/core/theme/puzzle_theme.dart';
+
+//Theme
+import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/theme/modes/main_sakura_theme.dart';
 
 class ThemeState extends Equatable {
   const ThemeState({
-    this.theme = const BlueThemeData(),
+    required this.themes,
+    this.theme = const MainSakuraTheme(),
   });
 
+  /// The list of all available themes.
+  final List<PuzzleTheme> themes;
 
   /// Currently selected theme.
-  final CustomTheme theme;
+  final PuzzleTheme theme;
 
   @override
-  List<Object> get props => [theme];
+  List<Object> get props => [themes, theme];
 
   ThemeState copyWith({
-    CustomTheme? theme,
+    List<PuzzleTheme>? themes,
+    PuzzleTheme? theme,
   }) {
     return ThemeState(
+      themes: themes ?? this.themes,
       theme: theme ?? this.theme,
     );
   }

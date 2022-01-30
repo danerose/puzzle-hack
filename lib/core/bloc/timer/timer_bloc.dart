@@ -1,19 +1,13 @@
-//Dart
+
 import 'dart:async';
 
-//Flutter
-
-
-//Dependencies
 import 'package:bloc/bloc.dart';
 
-//Models
-import 'package:puzzle_hack/core/data/models/ticker/ticker_model.dart';
-
-//Part of
-import 'package:puzzle_hack/core/bloc/timer/timer_event.dart';
 import 'package:puzzle_hack/core/bloc/timer/timer_state.dart';
+import 'package:puzzle_hack/core/bloc/timer/timer_event.dart';
 
+
+import 'package:puzzle_hack/core/data/models/ticker/ticker_model.dart';
 
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
