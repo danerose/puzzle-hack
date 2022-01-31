@@ -55,7 +55,6 @@ class SectionComponent extends StatelessWidget {
                     ),
                   ),
                   const PuzzleBoardWidget(),
-                  Text(tState.theme.name),
                   Expanded(
                     child: tState.theme.layoutDelegate.endSectionBuilder(
                       pState,

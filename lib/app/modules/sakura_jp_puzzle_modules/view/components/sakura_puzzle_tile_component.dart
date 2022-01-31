@@ -28,8 +28,8 @@ import 'package:puzzle_hack/core/data/models/tile/tile.dart';
 
 //Extensions
 import 'package:puzzle_hack/core/utils/extensions/audio_player_extension.dart';
-import 'package:puzzle_hack/core/utils/helpers/text_helpers.dart';
 import 'package:puzzle_hack/core/widget/audio/audio_control_listener.dart';
+import 'package:puzzle_hack/core/widget/common/glassmorphism_widget.dart';
 
 
 abstract class _TileSize {
@@ -151,29 +151,64 @@ class SakuraPuzzleTileComponentState extends State<SakuraPuzzleTileComponent>
                 child: ScaleTransition(
                   key: Key('sakura_puzzle_tile_scale_${widget.tile.value}'),
                   scale: _scale,
-                  child: IconButton(
-                    padding: EdgeInsets.zero,
-                    onPressed: state.status == SakuraPuzzleStatus.started 
-                      && puzzleIncomplete
-                      ? () {
-                          context.read<PuzzleBloc>().add(
-                            TileTapped(widget.tile),
-                          );
-                          unawaited(_audioPlayer?.replay());
-                        }
-                      : null,
-                    icon: Container(
-                      width: _TileSize.large,
-                      height: _TileSize.large,
-                      color: Theme.of(context).colorScheme.primary,
-                      child: Text(TextHelper.puzzleTileLabelText(
-                        widget.tile.value.toString(),
-                        widget.tile.currentPosition.x.toString(),
-                        widget.tile.currentPosition.y.toString(),
-                      ),),
+                  child: SizedBox.square(
+                    dimension: _TileSize.large,
+                    child: InkWell(
+                      onTap: state.status == SakuraPuzzleStatus.started 
+                        && puzzleIncomplete
+                        ? () {
+                            context.read<PuzzleBloc>().add(
+                              TileTapped(widget.tile),
+                            );
+                            unawaited(_audioPlayer?.replay());
+                          }
+                        : null,
+                        child: GlassMorphismWidget(
+                        start: 1,
+                        end: 0.1,
+                        child: Center(
+                          child: Text(widget.tile.value.toString()),
+                        ),
+                        // child: Center(
+                        //   child: Text(TextHelper.puzzleTileLabelText(
+                        //     widget.tile.value.toString(),
+                        //     widget.tile.currentPosition.x.toString(),
+                        //     widget.tile.currentPosition.y.toString(),
+                        //   ),),
+                        // ),
+                      ),
                     ),
                   ),
                 ),
+                // child: ScaleTransition(
+                //   key: Key('sakura_puzzle_tile_scale_${widget.tile.value}'),
+                //   scale: _scale,
+                //   child: IconButton(
+                //     padding: EdgeInsets.zero,
+                //     onPressed: state.status == SakuraPuzzleStatus.started 
+                //       && puzzleIncomplete
+                //       ? () {
+                //           context.read<PuzzleBloc>().add(
+                //             TileTapped(widget.tile),
+                //           );
+                //           unawaited(_audioPlayer?.replay());
+                //         }
+                //       : null,
+                //     icon: GlassMorphismWidget(
+                //       start: 1,
+                //       end: 0.1,
+                //       child: Container(
+                //         width: _TileSize.large,
+                //         height: _TileSize.large,
+                //         child: Text(TextHelper.puzzleTileLabelText(
+                //           widget.tile.value.toString(),
+                //           widget.tile.currentPosition.x.toString(),
+                //           widget.tile.currentPosition.y.toString(),
+                //         ),),
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ),
             ),
           );
