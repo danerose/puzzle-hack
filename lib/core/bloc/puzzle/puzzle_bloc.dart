@@ -1,13 +1,15 @@
 // ignore_for_file: public_member_api_docs
-
+//Dart
 import 'dart:math';
 
+//Dependencies
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+//Bloc
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_state.dart';
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_event.dart';
 
-
+//Models
 import 'package:puzzle_hack/core/data/models/tile/tile.dart';
 import 'package:puzzle_hack/core/data/models/puzzle/puzzle_model.dart';
 import 'package:puzzle_hack/core/data/models/position/position_model.dart';

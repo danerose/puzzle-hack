@@ -1,13 +1,15 @@
+//Dependencies
 import 'package:bloc/bloc.dart';
 
+//Bloc
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/bloc/theme/balls_theme_event.dart';
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/bloc/theme/balls_theme_state.dart';
 
+//Theme
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/theme/balls_theme.dart';
 
 
 class BallsThemeBloc extends Bloc<BallsThemeEvent, BallsThemeState> {
-  /// {@macro Balls_theme_bloc}
   BallsThemeBloc({required List<BallsTheme> themes})
       : super(BallsThemeState(themes: themes)) {
     on<BallsThemeChanged>(_onBallsThemeChanged);

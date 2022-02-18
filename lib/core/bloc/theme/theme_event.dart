@@ -1,4 +1,3 @@
-
 //Dependencies
 import 'package:equatable/equatable.dart';
 

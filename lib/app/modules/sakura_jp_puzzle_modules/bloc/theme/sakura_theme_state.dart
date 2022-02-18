@@ -1,7 +1,8 @@
+//Dependencies
 import 'package:equatable/equatable.dart';
 
+//Theme
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/theme/sakura_theme.dart';
-
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/theme/modes/main_sakura_theme.dart';
 
 class SakuraThemeState extends Equatable {

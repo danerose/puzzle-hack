@@ -1,6 +1,7 @@
+//Dependencies
 import 'package:bloc/bloc.dart';
 
-
+//Bloc
 import 'package:puzzle_hack/core/bloc/audio/audio_control_state.dart';
 import 'package:puzzle_hack/core/bloc/audio/audio_control_event.dart';
 

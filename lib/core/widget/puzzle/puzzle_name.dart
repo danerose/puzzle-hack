@@ -1,12 +1,17 @@
+//Flutter
 import 'package:flutter/material.dart';
+
+//Dependencies
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
+//Bloc
 import 'package:puzzle_hack/core/bloc/theme/theme_bloc.dart';
 import 'package:puzzle_hack/core/bloc/theme/theme_state.dart';
 
+//Theme
 import 'package:puzzle_hack/core/theme/puzzle_theme_animations.dart';
 
+//Layout
 import 'package:puzzle_hack/core/layout/responsive_layout_builder.dart';
 
 
@@ -32,6 +37,11 @@ class PuzzleName extends StatelessWidget {
             duration: PuzzleThemeAnimationDuration.textStyle,
             child: Text(
               state.theme.name,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
+                fontSize: 28,
+                fontWeight: FontWeight.w600,
+              ),
               key: const Key('puzzle_name_theme'),
             ),
           ),

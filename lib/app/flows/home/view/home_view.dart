@@ -3,28 +3,24 @@ import 'package:flutter/material.dart';
 
 //Dependencies
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:puzzle_hack/app/flows/home/view/components/header_component.dart';
-import 'package:puzzle_hack/app/flows/home/view/components/section_component.dart';
 
 
 //Theme
-
-//Layout
+import 'package:puzzle_hack/core/theme/puzzle_theme_animations.dart';
 
 //Bloc
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_bloc.dart';
+import 'package:puzzle_hack/core/bloc/puzzle/puzzle_state.dart';
 
 import 'package:puzzle_hack/core/bloc/theme/theme_bloc.dart';
 import 'package:puzzle_hack/core/bloc/theme/theme_state.dart';
 
-
-import 'package:puzzle_hack/core/bloc/puzzle/puzzle_state.dart';
-
-import 'package:puzzle_hack/core/theme/puzzle_theme_animations.dart';
-
 //Widget
 
 //View
+import 'package:puzzle_hack/app/flows/home/view/components/header_component.dart';
+import 'package:puzzle_hack/app/flows/home/view/components/section_component.dart';
+
 
 
 class HomeView extends StatefulWidget {
@@ -43,17 +39,23 @@ class _HomeViewState extends State<HomeView> {
         decoration: BoxDecoration(
           color: Theme.of(context).backgroundColor,
         ),
-        child: const _Home(
-          key:  Key('puzzle_view_puzzle'),
+        child: const Home(
+          key: Key('puzzle_view_puzzle'),
         ),
       ),
     );
   }
 }
 
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
 
-class _Home extends StatelessWidget {
-  const _Home({Key? key}) : super(key: key);
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +80,7 @@ class _Home extends StatelessWidget {
                         ),
                       ),
                     ),
-                    tState.theme.layoutDelegate.backgroundBuilder(pState),
+                    tState.theme.layoutDelegate.themePickerBuilder(pState),
                   ],
                 );
               },

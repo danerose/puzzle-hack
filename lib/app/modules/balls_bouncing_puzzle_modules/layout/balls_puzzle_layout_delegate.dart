@@ -1,15 +1,19 @@
 
+//Flutter
 import 'package:flutter/cupertino.dart';
-import 'package:puzzle_hack/core/data/models/tile/tile.dart';
 
+//Bloc
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_state.dart';
 
+//Models
+import 'package:puzzle_hack/core/data/models/tile/tile.dart';
+
+//Layout
 import 'package:puzzle_hack/core/layout/responsive_gap.dart';
 import 'package:puzzle_hack/core/layout/puzzle_layout_delegate.dart';
 import 'package:puzzle_hack/core/layout/responsive_layout_builder.dart';
 
 class BallsPuzzleLayoutDelegate extends PuzzleLayoutDelegate {
-  /// {@macro dashatar_puzzle_layout_delegate}
   const BallsPuzzleLayoutDelegate();
 
   @override
@@ -60,6 +64,11 @@ class BallsPuzzleLayoutDelegate extends PuzzleLayoutDelegate {
     );
   }
 
+  @override
+  Widget themePickerBuilder(PuzzleState state) {
+    return const SizedBox();    
+  }
+  
   @override
   Widget backgroundBuilder(PuzzleState state) {
     return const SizedBox();

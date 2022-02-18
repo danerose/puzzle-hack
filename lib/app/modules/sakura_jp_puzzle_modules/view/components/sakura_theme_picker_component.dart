@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 //Dependencies
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:puzzle_hack/core/bloc/particles/particles_bloc.dart';
+import 'package:puzzle_hack/core/bloc/particles/particles_event.dart';
 
 //Bloc
 import 'package:puzzle_hack/core/bloc/theme/theme_bloc.dart';
@@ -31,10 +33,10 @@ class SakuraThemePickerComponent extends StatefulWidget {
   })  : _audioPlayerFactory = audioPlayer ?? getAudioPlayer,
         super(key: key);
 
-  static const _activeThemeNormalSize = 120.0;
-  static const _activeThemeSmallSize = 65.0;
-  static const _inactiveThemeNormalSize = 96.0;
-  static const _inactiveThemeSmallSize = 50.0;
+  static const _activeThemeNormalSize = 90.0;
+  static const _inactiveThemeNormalSize = 66.0;
+  static const _activeThemeSmallSize = 45.0;
+  static const _inactiveThemeSmallSize = 35.0;
 
   final AudioPlayerFactory _audioPlayerFactory;
 
@@ -98,6 +100,11 @@ State<SakuraThemePickerComponent> {
                               return;
                             }
                             // Update the current Sakura theme.
+                            context.read<ParticlesBloc>().add(
+                              const ParticlesActiveDisabled(
+                                activeOrDisabled: false,
+                              ),
+                            );
                             context.read<SakuraThemeBloc>().add(
                               SakuraThemeChanged(themeIndex: index),
                             );
@@ -113,10 +120,12 @@ State<SakuraThemePickerComponent> {
                             height: size,
                             curve: Curves.easeInOut,
                             duration: const Duration(milliseconds: 350),
-                            child: Icon(
-                              Icons.ac_unit_outlined,
-                              color: theme.themeData.colorScheme.primary,
-                              semanticLabel: theme.semanticsLabel(context),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: Image.asset(
+                                theme.themeAsset,
+                                semanticLabel: theme.semanticsLabel(context),
+                              ),
                             ),
                           ),
                         ),

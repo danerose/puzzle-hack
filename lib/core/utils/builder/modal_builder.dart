@@ -1,5 +1,7 @@
+//Flutter
 import 'package:flutter/material.dart';
 
+//Components
 import 'package:puzzle_hack/core/components/dialog/app_dialog.dart';
 
 Future<T?> showAppDialog<T>({

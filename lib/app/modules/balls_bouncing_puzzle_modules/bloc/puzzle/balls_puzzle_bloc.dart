@@ -1,18 +1,18 @@
-
-
-
+//Dart
 import 'dart:async';
 
+//Dependencies
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+//Bloc
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/bloc/puzzle/balls_puzzle_event.dart';
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/bloc/puzzle/balls_puzzle_state.dart';
 
+//Model
 import 'package:puzzle_hack/core/data/models/ticker/ticker_model.dart';
 
 class BallsPuzzleBloc
     extends Bloc<BallsPuzzleEvent, BallsPuzzleState> {
-  /// {@macro Balls_puzzle_bloc}
   BallsPuzzleBloc({
     required this.secondsToBegin,
     required Ticker ticker,

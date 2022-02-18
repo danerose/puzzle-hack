@@ -1,18 +1,17 @@
-
-
-
+//Dart
 import 'dart:async';
 
+//Dependencies
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+//Bloc
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/bloc/puzzle/sakura_puzzle_event.dart';
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/bloc/puzzle/sakura_puzzle_state.dart';
 
+//Models
 import 'package:puzzle_hack/core/data/models/ticker/ticker_model.dart';
 
-class SakuraPuzzleBloc
-    extends Bloc<SakuraPuzzleEvent, SakuraPuzzleState> {
-  /// {@macro Sakura_puzzle_bloc}
+class SakuraPuzzleBloc extends Bloc<SakuraPuzzleEvent, SakuraPuzzleState> {
   SakuraPuzzleBloc({
     required this.secondsToBegin,
     required Ticker ticker,

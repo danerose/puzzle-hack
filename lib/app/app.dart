@@ -6,10 +6,12 @@
 // https://opensource.org/licenses/MIT.
 
 
-//Flutter
+//Flutte
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
+
+//Dependencies
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 
@@ -19,13 +21,18 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 
 //Theme
-import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/theme/modes/pink_sakura_theme.dart';
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/theme/modes/main_sakura_theme.dart';
+import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/theme/modes/pink_sakura_theme.dart';
+import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/theme/modes/violet_sakura_theme.dart';
+
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/theme/modes/main_balls_theme.dart';
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/theme/modes/pink_balls_theme.dart';
 
 //Bloc
 import 'package:puzzle_hack/core/bloc/audio/audio_control_bloc.dart';
+
+import 'package:puzzle_hack/core/bloc/particles/particles_bloc.dart';
+import 'package:puzzle_hack/core/bloc/particles/particles_event.dart';
 
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_bloc.dart';
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_event.dart';
@@ -61,18 +68,19 @@ class _AppState extends State<App> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => SakuraThemeBloc(
-            themes: const [
-              MainSakuraTheme(),
-              PinkSakuraTheme(),
-            ],
-          ),
-        ),
-        BlocProvider(
           create: (_) => BallsThemeBloc(
             themes: const [
               MainBallsTheme(),
               PinkBallsTheme(),
+            ],
+          ),
+        ),
+        BlocProvider(
+          create: (_) => SakuraThemeBloc(
+            themes: const [
+              MainSakuraTheme(),
+              PinkSakuraTheme(),
+              VioletSakuraTheme()
             ],
           ),
         ),
@@ -91,8 +99,8 @@ class _AppState extends State<App> {
         BlocProvider(
           create: (context) => ThemeBloc(
             initialThemes: [
+              context.read<BallsThemeBloc>().state.theme,
               context.read<SakuraThemeBloc>().state.theme,
-              context.read<BallsThemeBloc>().state.theme
             ],
           ),
         ),
@@ -105,8 +113,13 @@ class _AppState extends State<App> {
           create: (_) => AudioControlBloc(),
         ),
         BlocProvider(
-          create: (_) => PuzzleBloc(4)..add(
+          create: (_) => PuzzleBloc(2)..add(
             const PuzzleInitialized(shufflePuzzle: false),
+          ),
+        ),
+        BlocProvider(
+          create: (_) => ParticlesBloc()..add(
+            ParticlesInitialized(),
           ),
         ),
       ], 

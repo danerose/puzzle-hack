@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:puzzle_hack/core/bloc/particles/particles_bloc.dart';
+import 'package:puzzle_hack/core/bloc/particles/particles_event.dart';
 
 
 import 'package:puzzle_hack/core/theme/puzzle_theme.dart';
@@ -96,11 +98,11 @@ class MenuComponentItem extends StatelessWidget {
                 width: 100,
                 height: 40,
                 decoration: theme == state.theme
-                  ? const BoxDecoration(
+                  ? BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
                           width: 2,
-                          color: Colors.blue,
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),
                     )
@@ -139,6 +141,10 @@ class MenuComponentItem extends StatelessWidget {
                     context.read<SakuraPuzzleBloc>().add(
                       const SakuraCountdownStopped(),
                     );
+
+                    context.read<ParticlesBloc>().add(
+                      ParticlesInitialized(),
+                    );
                     // Initialize the puzzle board for the newly selected theme.
                     context.read<PuzzleBloc>().add(const PuzzleInitialized(
                       shufflePuzzle: false,
@@ -148,7 +154,9 @@ class MenuComponentItem extends StatelessWidget {
                   child: AnimatedDefaultTextStyle(
                     duration: PuzzleThemeAnimationDuration.textStyle,
                     style: TextStyle(
-                      color: theme == state.theme ? Colors.amber: Colors.black,
+                      color: theme == state.theme 
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.onPrimary,
                     ),
                     child: Text(theme.name),
                   ),

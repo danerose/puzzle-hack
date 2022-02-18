@@ -56,14 +56,20 @@ class SakuraTimerWidget extends StatelessWidget {
                     semanticsLabel: DurationHelper.getDurationLabel(
                       Duration(seconds: state.secondsElapsed),
                     ),
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                      fontSize: currentSize == ResponsiveLayoutSize.large ?
+                      30 : 24,
+                    ),
                   ),
                 ),
                 Gap(iconPadding ?? 8),
                 Icon(
                   Icons.timer,
                   key: const Key('sakura_timer_icon'),
+                  color: Theme.of(context).colorScheme.onPrimary,
                   size:  iconSize?.width  ??
-                    (currentSize == ResponsiveLayoutSize.small
+                    (currentSize == ResponsiveLayoutSize.large
                     ? const Size(28, 28).width
                     : const Size(32, 32).width
                   ),

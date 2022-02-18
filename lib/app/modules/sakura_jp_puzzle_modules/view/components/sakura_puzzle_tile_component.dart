@@ -1,5 +1,8 @@
 //Dart
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'dart:async';
+import 'dart:developer';
 
 //Flutter
 import 'package:flutter/material.dart';
@@ -12,6 +15,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_bloc.dart';
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_event.dart';
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_state.dart';
+
+import 'package:puzzle_hack/core/bloc/particles/particles_bloc.dart';
+import 'package:puzzle_hack/core/bloc/particles/particles_event.dart';
 
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/bloc/puzzle/sakura_puzzle_bloc.dart';
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/bloc/puzzle/sakura_puzzle_state.dart';
@@ -66,6 +72,7 @@ class SakuraPuzzleTileComponentState extends State<SakuraPuzzleTileComponent>
   /// The controller that drives [_scale] animation.
   late AnimationController _controller;
   late Animation<double> _scale;
+  final GlobalKey _key = GlobalKey();
 
   @override
   void initState() {
@@ -103,20 +110,33 @@ class SakuraPuzzleTileComponentState extends State<SakuraPuzzleTileComponent>
     final puzzleIncomplete =
       context.select((PuzzleBloc bloc) => bloc.state.puzzleStatus) ==
       PuzzleStatus.incomplete;
+      
     final size = widget.state.puzzle.getDimension();
     return AudioControlListener(
       audioPlayer: _audioPlayer,
-      child:BlocBuilder<SakuraPuzzleBloc, SakuraPuzzleState>(
-        builder: (BuildContext _,SakuraPuzzleState state) {
+      child: BlocBuilder<SakuraPuzzleBloc, SakuraPuzzleState>(
+        builder: (BuildContext _,SakuraPuzzleState pState) {
           return AnimatedAlign(
             alignment: FractionalOffset(
               (widget.tile.currentPosition.x - 1) / (size - 1),
               (widget.tile.currentPosition.y - 1) / (size - 1),
             ),
-            duration: state.status == SakuraPuzzleStatus.loading
+            duration: pState.status == SakuraPuzzleStatus.loading
               ? const Duration(milliseconds: 800)
               : const Duration(milliseconds: 370),
             curve: Curves.easeInOut,
+            onEnd: (){
+              final endBox = _key.currentContext?.findRenderObject() as RenderBox?;
+              final endPos = endBox?.localToGlobal(Offset.zero);
+              context.read<ParticlesBloc>().add(
+                ParticlesEndAnimation(
+                  animate: true, 
+                  endX: endPos?.dx ?? 100, 
+                  endY: endPos?.dy ?? 100, 
+                ),
+              );
+              log('EndPos $endPos');
+            },
             child: ResponsiveLayoutBuilder(
               small: (_, child) => SizedBox.square(
                 key: Key('sakura_puzzle_tile_small_${widget.tile.value}'),
@@ -135,14 +155,14 @@ class SakuraPuzzleTileComponentState extends State<SakuraPuzzleTileComponent>
               ),
               child: (_) => MouseRegion(
                 onEnter: (_) {
-                  if (state.status == SakuraPuzzleStatus.started
+                  if (pState.status == SakuraPuzzleStatus.started
                       && puzzleIncomplete) 
                   {
                     _controller.forward();
                   }
                 },
                 onExit: (_) {
-                  if (state.status == SakuraPuzzleStatus.started 
+                  if (pState.status == SakuraPuzzleStatus.started 
                     && puzzleIncomplete) 
                   {
                     _controller.reverse();
@@ -154,12 +174,24 @@ class SakuraPuzzleTileComponentState extends State<SakuraPuzzleTileComponent>
                   child: SizedBox.square(
                     dimension: _TileSize.large,
                     child: InkWell(
-                      onTap: state.status == SakuraPuzzleStatus.started 
+                      onTap: pState.status == SakuraPuzzleStatus.started 
                         && puzzleIncomplete
                         ? () {
+                            final initBox = _key.currentContext?.findRenderObject() as RenderBox?;
+                            final initPos = initBox?.localToGlobal(Offset.zero);
+                            log('InitPos $initPos');
+                            context.read<ParticlesBloc>().add(
+                              ParticlesInitAnimation(
+                                animate: false, 
+                                initX: initPos?.dx ?? 100, 
+                                initY: initPos?.dy ?? 100, 
+                              ),
+                            );
+                            log('Before Tile ${widget.state.lastTappedTile}');
                             context.read<PuzzleBloc>().add(
                               TileTapped(widget.tile),
                             );
+                            log('After Tile ${widget.state.lastTappedTile}');
                             unawaited(_audioPlayer?.replay());
                           }
                         : null,
@@ -167,7 +199,10 @@ class SakuraPuzzleTileComponentState extends State<SakuraPuzzleTileComponent>
                         start: 1,
                         end: 0.1,
                         child: Center(
-                          child: Text(widget.tile.value.toString()),
+                          child: Text(
+                            widget.tile.value.toString(),
+                            key: _key,
+                          ),
                         ),
                         // child: Center(
                         //   child: Text(TextHelper.puzzleTileLabelText(

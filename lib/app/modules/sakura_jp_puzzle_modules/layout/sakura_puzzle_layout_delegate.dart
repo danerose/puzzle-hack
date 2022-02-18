@@ -1,5 +1,21 @@
-
+//Flutter
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+
+//Models
+import 'package:puzzle_hack/core/data/models/tile/tile.dart';
+
+
+//Bloc
+import 'package:puzzle_hack/core/bloc/puzzle/puzzle_state.dart';
+
+//Layout
+import 'package:puzzle_hack/core/layout/responsive_gap.dart';
+import 'package:puzzle_hack/core/layout/puzzle_layout_delegate.dart';
+import 'package:puzzle_hack/core/layout/responsive_layout_builder.dart';
+
+//Components
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/view/components/sakura_coutdown_component.dart';
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/view/components/sakura_puzzle_action_button_component.dart';
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/view/components/sakura_puzzle_board_component.dart';
@@ -7,13 +23,6 @@ import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/view/components
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/view/components/sakura_start_section_component.dart';
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/view/components/sakura_theme_picker_component.dart';
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/view/widgets/sakura_timer_widget.dart';
-import 'package:puzzle_hack/core/data/models/tile/tile.dart';
-
-import 'package:puzzle_hack/core/bloc/puzzle/puzzle_state.dart';
-
-import 'package:puzzle_hack/core/layout/responsive_gap.dart';
-import 'package:puzzle_hack/core/layout/puzzle_layout_delegate.dart';
-import 'package:puzzle_hack/core/layout/responsive_layout_builder.dart';
 
 class SakuraPuzzleLayoutDelegate extends PuzzleLayoutDelegate {
   const SakuraPuzzleLayoutDelegate();
@@ -67,7 +76,7 @@ class SakuraPuzzleLayoutDelegate extends PuzzleLayoutDelegate {
   }
 
   @override
-  Widget backgroundBuilder(PuzzleState state) {
+  Widget themePickerBuilder(PuzzleState state) {
     return Positioned(
       bottom: 74,
       right: 50,
@@ -77,6 +86,20 @@ class SakuraPuzzleLayoutDelegate extends PuzzleLayoutDelegate {
         large: (_, child) => const SakuraThemePickerComponent(),
       ),
     );
+  }
+
+  @override
+  Widget backgroundBuilder(PuzzleState state) {
+    return const SizedBox();
+    // return Positioned(
+    //   bottom: 74,
+    //   right: 50,
+    //   child: ResponsiveLayoutBuilder(
+    //     small: (_, child) => const SizedBox(),
+    //     medium: (_, child) => const SizedBox(),
+    //     large: (_, child) => const SakuraThemePickerComponent(),
+    //   ),
+    // );
   }
 
   @override

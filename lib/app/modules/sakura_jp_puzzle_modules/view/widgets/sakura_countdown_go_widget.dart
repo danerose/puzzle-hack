@@ -86,11 +86,11 @@ class _SakuraCountdownGoWidgetState extends State<SakuraCountdownGoWidget>
                 scale: outScale,
                 child: ScaleTransition(
                   scale: inScale,
-                  child: const Text(
+                  child: Text(
                     'GO!',
                     style: TextStyle(
                       fontSize: 100,
-                      color: Colors.green,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                 ),

@@ -1,5 +1,10 @@
+//Flutter
 import 'package:flutter/material.dart';
+
+//Dependencies
 import 'package:gap/gap.dart';
+
+//Layout
 import 'package:puzzle_hack/core/layout/responsive_layout_builder.dart';
 
 

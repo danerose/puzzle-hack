@@ -1,12 +1,20 @@
+//Darrt
 import 'dart:async';
 
+//Flutter
 import 'package:flutter/material.dart';
 
+//Dependencies
 import 'package:gap/gap.dart';
-
 import 'package:just_audio/just_audio.dart';
+
+//Repository
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/data/repository/link_repository.dart';
+
+//Extensions
 import 'package:puzzle_hack/core/utils/extensions/audio_player_extension.dart';
+
+//Widget
 import 'package:puzzle_hack/core/widget/audio/audio_control_listener.dart';
 
 

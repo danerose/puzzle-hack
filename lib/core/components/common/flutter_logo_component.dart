@@ -1,8 +1,10 @@
 //Flutter
 import 'package:flutter/material.dart';
 
+//Theme
 import 'package:puzzle_hack/core/theme/puzzle_theme_animations.dart';
 
+//Layout
 import 'package:puzzle_hack/core/layout/responsive_layout_builder.dart';
 
 class FlutterLogoComponent extends StatelessWidget {

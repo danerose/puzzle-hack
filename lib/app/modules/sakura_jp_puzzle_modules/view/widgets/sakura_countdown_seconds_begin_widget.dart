@@ -83,7 +83,10 @@ class _SakuraCountdownSecondsToBeginWidgetState
               scale: inScale,
               child: Text(
                 widget.secondsToBegin.toString(),
-                style: const TextStyle(),
+                style: TextStyle(
+                  fontSize: 50,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
               ),
             ),
           ),

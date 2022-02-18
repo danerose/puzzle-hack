@@ -52,15 +52,17 @@ class SakuraScoreComponent extends StatelessWidget {
                     ? _largeImageOffset.dx
                     : (currentSize == ResponsiveLayoutSize.medium
                         ? _mediumImageOffset.dx
-                        : _smallImageOffset.dx),
+                        : _smallImageOffset.dx
+                  ),
                   top: currentSize == ResponsiveLayoutSize.large
                     ? _largeImageOffset.dy
                     : (currentSize == ResponsiveLayoutSize.medium
                         ? _mediumImageOffset.dy
-                        : _smallImageOffset.dy),
+                        : _smallImageOffset.dy
+                  ),
                   child: Icon(
                     Icons.check_box,
-                    size:currentSize == ResponsiveLayoutSize.small?374.0:437.0,
+                    size:currentSize == ResponsiveLayoutSize.small ? 74.0: 37.0,
                   ),
                 ),
                 Padding(

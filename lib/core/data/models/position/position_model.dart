@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 class Position extends Equatable implements Comparable<Position> {
-  /// {@macro position}
   const Position({required this.x, required this.y});
 
   /// The x position.

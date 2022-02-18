@@ -1,6 +1,7 @@
-
+//Dependencies
 import 'package:equatable/equatable.dart';
 
+//Models
 import 'package:puzzle_hack/core/data/models/tile/tile.dart';
 
 abstract class PuzzleEvent extends Equatable {

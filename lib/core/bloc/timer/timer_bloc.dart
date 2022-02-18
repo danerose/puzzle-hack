@@ -1,12 +1,14 @@
-
+//Dart
 import 'dart:async';
 
+//Dependencies
 import 'package:bloc/bloc.dart';
 
+//Bloc
 import 'package:puzzle_hack/core/bloc/timer/timer_state.dart';
 import 'package:puzzle_hack/core/bloc/timer/timer_event.dart';
 
-
+//Models
 import 'package:puzzle_hack/core/data/models/ticker/ticker_model.dart';
 
 

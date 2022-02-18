@@ -53,23 +53,55 @@ class NumberOfMovesAndTilesLeft extends StatelessWidget {
                   key: const Key('number_of_moves_and_tiles_left_moves'),
                   style: const TextStyle(),
                   duration: PuzzleThemeAnimationDuration.textStyle,
-                  child: Text(numberOfMoves.toString()),
+                  child: Text(numberOfMoves.toString(),
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSecondary,
+                      fontSize: currentSize == ResponsiveLayoutSize.large
+                      ? 28 : 20,
+                    ),                 
+                  ),
                 ),
-                const AnimatedDefaultTextStyle(
-                  style: TextStyle(),
+                AnimatedDefaultTextStyle(
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSecondary,
+                    fontSize: currentSize == ResponsiveLayoutSize.large
+                    ? 28 : 20,                   
+                  ),
                   duration: PuzzleThemeAnimationDuration.textStyle,
-                  child: Text(' Moves | '),
+                  child: Text(' Moves | ',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSecondary,
+                      fontSize: currentSize == ResponsiveLayoutSize.large
+                      ? 26 : 18,
+                    ),                   
+                  ),
                 ),
                 AnimatedDefaultTextStyle(
                   key: const Key('number_of_moves_and_tiles_left_tiles_left'),
                   style: const TextStyle(),
                   duration: PuzzleThemeAnimationDuration.textStyle,
-                  child: Text(numberOfTilesLeft.toString()),
+                  child: Text(numberOfTilesLeft.toString(),          
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSecondary,
+                      fontSize: currentSize == ResponsiveLayoutSize.large
+                      ? 28 : 20,
+                    ),                  
+                  ),
                 ),
-                const AnimatedDefaultTextStyle(
-                  style: TextStyle(),
+                AnimatedDefaultTextStyle(
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSecondary,
+                    fontSize: currentSize == ResponsiveLayoutSize.large
+                    ? 28 : 20,
+                  ),
                   duration: PuzzleThemeAnimationDuration.textStyle,
-                  child: Text(' Tiles'),
+                  child: Text(' Tiles',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSecondary,
+                      fontSize: currentSize == ResponsiveLayoutSize.large
+                      ? 26 : 18,
+                    ),                 
+                  ),
                 ),
               ],
             ),

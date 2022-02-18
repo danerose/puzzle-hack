@@ -20,10 +20,10 @@ import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/bloc/puzzle/sak
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/bloc/puzzle/sakura_puzzle_event.dart';
 
 //Extensions
-import 'package:puzzle_hack/core/widget/audio/audio_control_listener.dart';
 import 'package:puzzle_hack/core/utils/extensions/audio_player_extension.dart';
 
 //Widget
+import 'package:puzzle_hack/core/widget/audio/audio_control_listener.dart';
 import 'package:puzzle_hack/core/widget/puzzle/puzzle_button.dart';
 
 class SakuraPuzzleActionButtonComponent extends StatefulWidget {
@@ -91,11 +91,23 @@ class _SakuraPuzzleActionButtonComponentState
                     unawaited(_audioPlayer.replay());
                   },
                 textColor: state.status == SakuraPuzzleStatus.loading
-                ? Colors.amber : Colors.pink,
+                ? Theme.of(context).colorScheme.onPrimary 
+                : Theme.of(context).colorScheme.primary,
                 child: state.status == SakuraPuzzleStatus.started 
-                ? const Text('Restart')
+                ? Text('Restart',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onError,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 2,
+                  ),
+                )
                 : Text(state.status == SakuraPuzzleStatus.loading
                   ? 'Get ready...' : 'Start Game',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 2,
+                  ),
                 ),
               ),
             );

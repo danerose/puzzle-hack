@@ -1,8 +1,8 @@
+//Dependencies
 import 'package:equatable/equatable.dart';
 
-
+//Models
 import 'package:puzzle_hack/core/data/models/tile/tile.dart';
-
 import 'package:puzzle_hack/core/data/models/puzzle/puzzle_model.dart';
 
 enum PuzzleStatus { incomplete, complete }

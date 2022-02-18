@@ -1,5 +1,6 @@
+//Dependencies
 import 'package:equatable/equatable.dart';
-
+//Model
 import 'package:puzzle_hack/core/data/models/position/position_model.dart';
 
 class Tile extends Equatable {

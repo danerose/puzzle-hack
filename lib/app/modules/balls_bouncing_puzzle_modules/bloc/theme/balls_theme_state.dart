@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+//Theme
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/theme/balls_theme.dart';
-
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/theme/modes/main_balls_theme.dart';
 
 class BallsThemeState extends Equatable {

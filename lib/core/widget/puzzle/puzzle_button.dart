@@ -1,7 +1,10 @@
+//Flutter
 import 'package:flutter/material.dart';
 
+//Theme
 import 'package:puzzle_hack/core/theme/puzzle_theme_animations.dart';
 
+//Widgets
 import 'package:puzzle_hack/core/widget/button/animated_text_button.dart';
 
 
