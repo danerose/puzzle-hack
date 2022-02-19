@@ -19,6 +19,7 @@ dependencies:
   just_audio: ^0.9.18
   url_launcher: ^6.0.17
   rive: ^0.8.1
+  flutter_svg: ^1.0.3
 
 dev_dependencies:
   bloc_test: ^9.0.2
@@ -35,3 +36,4 @@ flutter:
     - assets/sakura/
     - assets/logo/
     - assets/audio/
+    - assets/icons/

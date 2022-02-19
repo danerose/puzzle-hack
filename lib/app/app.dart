@@ -27,6 +27,7 @@ import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/theme/modes/vio
 
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/theme/modes/main_balls_theme.dart';
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/theme/modes/pink_balls_theme.dart';
+import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/theme/modes/violet_balls_theme.dart';
 
 //Bloc
 import 'package:puzzle_hack/core/bloc/audio/audio_control_bloc.dart';
@@ -72,6 +73,7 @@ class _AppState extends State<App> {
             themes: const [
               MainBallsTheme(),
               PinkBallsTheme(),
+              VioletBallsTheme(),
             ],
           ),
         ),
@@ -113,7 +115,7 @@ class _AppState extends State<App> {
           create: (_) => AudioControlBloc(),
         ),
         BlocProvider(
-          create: (_) => PuzzleBloc(2)..add(
+          create: (_) => PuzzleBloc(4)..add(
             const PuzzleInitialized(shufflePuzzle: false),
           ),
         ),

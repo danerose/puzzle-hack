@@ -91,15 +91,6 @@ class SakuraPuzzleLayoutDelegate extends PuzzleLayoutDelegate {
   @override
   Widget backgroundBuilder(PuzzleState state) {
     return const SizedBox();
-    // return Positioned(
-    //   bottom: 74,
-    //   right: 50,
-    //   child: ResponsiveLayoutBuilder(
-    //     small: (_, child) => const SizedBox(),
-    //     medium: (_, child) => const SizedBox(),
-    //     large: (_, child) => const SakuraThemePickerComponent(),
-    //   ),
-    // );
   }
 
   @override

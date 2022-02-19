@@ -1,26 +1,26 @@
 //Flutter
 import 'package:flutter/material.dart';
 
-//Themes
-import 'package:puzzle_hack/core/theme/modes/main_theme.dart';
+//Theme
+import 'package:puzzle_hack/core/theme/modes/violet_theme.dart';
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/theme/balls_theme.dart';
 
-class MainBallsTheme extends BallsTheme{
+class VioletBallsTheme extends BallsTheme{
 
-  const MainBallsTheme() : super();
+  const VioletBallsTheme() : super();
 
 
   @override
   String semanticsLabel(BuildContext context) {
-    return 'Balls Main';
+    return 'Balls Violet';
   }
 
   @override
   String get audioAsset => 'assets/audio/skateboard.mp3';
-
-  @override
-  String get themeAsset => '';
   
   @override
-  ThemeData get themeData => MainThemeData.themeData ;
+  String get themeAsset => '';
+
+  @override
+  ThemeData get themeData => VioletThemeData.themeData ;
  }

@@ -10,7 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:just_audio/just_audio.dart';
 
 //Repository
-import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/data/repository/link_repository.dart';
+import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/data/repository/link_repository.dart';
 
 //Extensions
 import 'package:puzzle_hack/core/utils/extensions/audio_player_extension.dart';
@@ -23,9 +23,8 @@ import 'package:puzzle_hack/core/widget/audio/audio_control_listener.dart';
 const _shareUrl = 'https://flutterhack.devpost.com/';
 
 
-class SakuraTwitterButton extends StatelessWidget {
-  /// {@macro Sakura_twitter_button}
-  const SakuraTwitterButton({Key? key}) : super(key: key);
+class BallsTwitterButton extends StatelessWidget {
+  const BallsTwitterButton({Key? key}) : super(key: key);
 
   String _twitterShareUrl(BuildContext context) {
     const shareText = 'Just solved the #FlutterPuzzleHack! Check it out ↓';
@@ -35,7 +34,7 @@ class SakuraTwitterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SakuraShareButton(
+    return BallsShareButton(
       title: 'Twitter',
       icon: SvgPicture.asset(
         'assets/icons/icon_twitter.svg',
@@ -50,8 +49,8 @@ class SakuraTwitterButton extends StatelessWidget {
 }
 
 
-class SakuraFacebookButton extends StatelessWidget {
-  const SakuraFacebookButton({Key? key}) : super(key: key);
+class BallsFacebookButton extends StatelessWidget {
+  const BallsFacebookButton({Key? key}) : super(key: key);
 
   String _facebookShareUrl(BuildContext context) {
     const shareText = 'Just solved the #FlutterPuzzleHack! Check it out ↓';
@@ -61,7 +60,7 @@ class SakuraFacebookButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SakuraShareButton(
+    return BallsShareButton(
       title: 'Facebook',
       icon: SvgPicture.asset(
         'assets/icons/icon_facebook.svg',
@@ -75,8 +74,8 @@ class SakuraFacebookButton extends StatelessWidget {
   }
 }
 
-class SakuraShareButton extends StatefulWidget {
-  const SakuraShareButton({
+class BallsShareButton extends StatefulWidget {
+  const BallsShareButton({
     Key? key,
     required this.onPressed,
     required this.title,
@@ -101,10 +100,10 @@ class SakuraShareButton extends StatefulWidget {
   final AudioPlayerFactory _audioPlayerFactory;
 
   @override
-  State<SakuraShareButton> createState() => _SakuraShareButtonState();
+  State<BallsShareButton> createState() => _BallsShareButtonState();
 }
 
-class _SakuraShareButtonState extends State<SakuraShareButton> {
+class _BallsShareButtonState extends State<BallsShareButton> {
   late final AudioPlayer _audioPlayer;
 
   @override

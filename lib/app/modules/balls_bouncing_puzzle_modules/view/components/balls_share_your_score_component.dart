@@ -8,20 +8,21 @@ import 'package:puzzle_hack/core/layout/responsive_gap.dart';
 //Layout
 import 'package:puzzle_hack/core/layout/responsive_layout_builder.dart';
 
+
 //Component
-import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/view/components/sakura_share_buttom_component.dart';
+import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/view/components/balls_share_buttom_component.dart';
 
 //widget
-import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/builder/sakura_share_dialog_animated_builder.dart';
+import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/builder/balls_share_dialog_animated_builder.dart';
 
-class SakuraShareYourScoreComponent extends StatelessWidget {
-  const SakuraShareYourScoreComponent({
+class BallsShareYourScoreComponent extends StatelessWidget {
+  const BallsShareYourScoreComponent({
     Key? key,
     required this.animation,
   }) : super(key: key);
 
   /// The entry animation of this widget.
-  final SakuraShareDialogEnterAnimation animation;
+  final BallsShareDialogEnterAnimation animation;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class SakuraShareYourScoreComponent extends StatelessWidget {
       large: (_, child) => child!,
       child: (currentSize) {
         return Column(
-          key: const Key('sakura_share_your_score'),
+          key: const Key('balls_share_your_score'),
           crossAxisAlignment: currentSize == ResponsiveLayoutSize.large
             ? CrossAxisAlignment.start
             : CrossAxisAlignment.center,
@@ -47,7 +48,7 @@ class SakuraShareYourScoreComponent extends StatelessWidget {
                   children: [
                     Text(
                       'Share your score!',
-                      key: const Key('sakura_share_your_score_title'),
+                      key: const Key('balls_share_your_score_title'),
                       textAlign:  currentSize == ResponsiveLayoutSize.large
                         ? TextAlign.left
                         : TextAlign.center,
@@ -62,7 +63,7 @@ class SakuraShareYourScoreComponent extends StatelessWidget {
                       child: Text(
                         'Share this puzzle to challenge your friends and be ' 
                         'sure to check out the Flutter Puzzle Hack.',
-                        key: const Key('sakura_share_your_score_message'),
+                        key: const Key('balls_share_your_score_message'),
                         textAlign: currentSize == ResponsiveLayoutSize.large
                           ? TextAlign.left
                           : TextAlign.center,
@@ -87,9 +88,9 @@ class SakuraShareYourScoreComponent extends StatelessWidget {
                     ? MainAxisAlignment.start
                     : MainAxisAlignment.center,
                   children: const [
-                    SakuraTwitterButton(),
+                    BallsTwitterButton(),
                     Gap(16),
-                    SakuraFacebookButton(),
+                    BallsFacebookButton(),
                   ],
                 ),
               ),

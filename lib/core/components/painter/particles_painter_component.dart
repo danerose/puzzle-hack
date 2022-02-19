@@ -8,8 +8,8 @@ import 'package:flutter/foundation.dart';
 //Flutter
 
 
-class PainterComponent extends StatefulWidget {
-  const PainterComponent({
+class ParticlesPainterComponent extends StatefulWidget {
+  const ParticlesPainterComponent({
     Key? key,
      required this.colors,
      required this.endX,
@@ -25,10 +25,10 @@ class PainterComponent extends StatefulWidget {
   final double endY;
 
   @override
-  PainterComponentState createState() => PainterComponentState();
+  ParticlesPainterComponentState createState() => ParticlesPainterComponentState();
 }
 
-class PainterComponentState extends State<PainterComponent> {
+class ParticlesPainterComponentState extends State<ParticlesPainterComponent> {
   /// Notifies the animation about the currently elapsed time.
   late ValueNotifier<double> _time;
 

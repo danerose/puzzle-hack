@@ -12,7 +12,7 @@ class PinkBallsTheme extends BallsTheme{
 
   @override
   String semanticsLabel(BuildContext context) {
-    return 'Balls Dash';
+    return 'Balls Pink';
   }
 
   @override
