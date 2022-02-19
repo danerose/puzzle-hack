@@ -10,11 +10,15 @@ class GlassMorphismWidget extends StatelessWidget {
     required this.child,
     required this.start,
     required this.end,
+    this.colorStart = Colors.white,
+    this.colorEnd = Colors.white,
   }) : super(key: key);
 
   final Widget child;
   final double start;
   final double end;
+  final Color colorEnd;
+  final Color colorStart;
  
   @override
   Widget build(BuildContext context) {
@@ -25,8 +29,8 @@ class GlassMorphismWidget extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.white.withOpacity(start),
-                Colors.white.withOpacity(end),
+                colorStart.withOpacity(start),
+                colorEnd.withOpacity(end),
               ],
               begin: AlignmentDirectional.topStart,
               end: AlignmentDirectional.bottomEnd,

@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'dart:async';
 
 //Flutter
@@ -25,6 +27,8 @@ import 'package:puzzle_hack/core/layout/responsive_layout_builder.dart';
 
 //Widget
 import 'package:puzzle_hack/core/widget/audio/audio_control_listener.dart';
+import 'package:puzzle_hack/core/widget/common/glassmorphism_widget.dart';
+import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/view/widgets/balls_animation_widget.dart';
 
 class BallsThemePickerComponent extends StatefulWidget {
   const BallsThemePickerComponent({
@@ -120,18 +124,18 @@ State<BallsThemePickerComponent> {
                             height: size,
                             curve: Curves.easeInOut,
                             duration: const Duration(milliseconds: 350),
-                            child: Container(
-                              // semanticLabel: theme.semanticsLabel(context),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    theme.themeData.colorScheme.primary,
-                                    theme.themeData.colorScheme.secondary
-                                  ],
-                                ),
+                            child: GlassMorphismWidget(
+                              start: 1,
+                              end: 0.1,
+                              colorStart: theme.themeData.colorScheme.secondaryVariant,
+                              child: BallsAnimationWidget(
+                                changeOnLimit: false,
+                                color: 0,
+                                size: isSmallSize ?  10 : 20,
+                                colors: [theme.themeData.colorScheme.primary],
+                                x: size / 2,
+                                y: 0,
+                                globalKey: GlobalKey(),
                               ),
                             ),
                           ),

@@ -21,6 +21,7 @@ import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/view/compo
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/view/components/balls_puzzle_board_component.dart';
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/view/components/balls_start_section_component.dart';
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/view/components/balls_puzzle_action_button_component.dart';
+import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/view/components/balls_background_animation_component.dart';
 
 
 class BallsPuzzleLayoutDelegate extends PuzzleLayoutDelegate {
@@ -89,7 +90,7 @@ class BallsPuzzleLayoutDelegate extends PuzzleLayoutDelegate {
 
   @override
   Widget backgroundBuilder(PuzzleState state) {
-    return const SizedBox();
+    return const BallsBackgroundAnimationComponent();
   }
 
   @override

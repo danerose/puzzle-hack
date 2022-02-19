@@ -2,7 +2,7 @@
 // ignore_for_file: lines_longer_than_80_chars
 
 import 'dart:async';
-import 'dart:developer';
+import 'dart:math';
 
 //Flutter
 import 'package:flutter/material.dart';
@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 //Dependencies
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/view/widgets/balls_animation_widget.dart';
 
 //Bloc
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_bloc.dart';
@@ -74,6 +75,8 @@ class BallsPuzzleTileComponentState extends State<BallsPuzzleTileComponent>
   late Animation<double> _scale;
   final GlobalKey _key = GlobalKey();
 
+
+
   @override
   void initState() {
     super.initState();
@@ -107,11 +110,9 @@ class BallsPuzzleTileComponentState extends State<BallsPuzzleTileComponent>
 
   @override
   Widget build(BuildContext context) {
-    final puzzleIncomplete =
-      context.select((PuzzleBloc bloc) => bloc.state.puzzleStatus) ==
-      PuzzleStatus.incomplete;
-      
+    final puzzleIncomplete = context.select((PuzzleBloc bloc) => bloc.state.puzzleStatus) == PuzzleStatus.incomplete;  
     final size = widget.state.puzzle.getDimension();
+    final balls =  widget.tile.value <= 5 ? 1 : widget.tile.value <= 10  ? 2 : 3;
     return AudioControlListener(
       audioPlayer: _audioPlayer,
       child: BlocBuilder<BallsPuzzleBloc, BallsPuzzleState>(
@@ -135,7 +136,6 @@ class BallsPuzzleTileComponentState extends State<BallsPuzzleTileComponent>
                   endY: endPos?.dy ?? 100, 
                 ),
               );
-              log('EndPos $endPos');
             },
             child: ResponsiveLayoutBuilder(
               small: (_, child) => SizedBox.square(
@@ -186,11 +186,29 @@ class BallsPuzzleTileComponentState extends State<BallsPuzzleTileComponent>
                         child: GlassMorphismWidget(
                         start: 1,
                         end: 0.1,
-                        child: Center(
-                          child: Text(
-                            widget.tile.value.toString(),
-                            key: _key,
-                          ),
+                        child: Stack(
+                          children: [
+                            for (var i = 0; i < balls; i++)
+                            BallsAnimationWidget(
+                              changeOnLimit: false,
+                              globalKey: _key, 
+                              x: Random().nextInt(99).toDouble() * 2, 
+                              y: Random().nextInt(99).toDouble() * 2,
+                              color: Random().nextInt(4),
+                              size: _ == ResponsiveLayoutSize.small ? 10 : 20,
+                              colors: [
+                                Theme.of(context).colorScheme.primary,
+                                Theme.of(context).colorScheme.primaryVariant,
+                                Theme.of(context).colorScheme.secondary,
+                                Theme.of(context).colorScheme.secondaryVariant,
+                              ],
+                            ),
+                            Center(
+                              child: Text(
+                                widget.tile.value.toString(),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

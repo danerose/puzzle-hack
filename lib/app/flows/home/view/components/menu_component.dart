@@ -1,4 +1,6 @@
 //Flutter
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
@@ -157,6 +159,9 @@ class MenuComponentItem extends StatelessWidget {
                       color: theme == state.theme 
                       ? Theme.of(context).colorScheme.primary
                       : Theme.of(context).colorScheme.onPrimary,
+                      fontSize: currentSize == ResponsiveLayoutSize.small ? 14: 16,
+                      letterSpacing: currentSize == ResponsiveLayoutSize.small ? 0 : 2,
+                      fontWeight: FontWeight.w700,
                     ),
                     child: Text(theme.name),
                   ),

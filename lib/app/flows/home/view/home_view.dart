@@ -67,6 +67,7 @@ class _HomeState extends State<Home> {
               builder: (BuildContext _,PuzzleState pState) {
                 return Stack(
                   children: [
+                    tState.theme.layoutDelegate.backgroundBuilder(pState),
                     SingleChildScrollView(
                       child: ConstrainedBox(
                         constraints: BoxConstraints(
