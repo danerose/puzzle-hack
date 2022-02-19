@@ -25,7 +25,8 @@ class ParticlesPainterComponent extends StatefulWidget {
   final double endY;
 
   @override
-  ParticlesPainterComponentState createState() => ParticlesPainterComponentState();
+  ParticlesPainterComponentState createState() => 
+  ParticlesPainterComponentState();
 }
 
 class ParticlesPainterComponentState extends State<ParticlesPainterComponent> {
