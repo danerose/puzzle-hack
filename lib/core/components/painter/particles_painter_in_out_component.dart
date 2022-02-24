@@ -8,14 +8,15 @@ import 'package:flutter/foundation.dart';
 //Flutter
 
 
-class ParticlesPainterComponent extends StatefulWidget {
-  const ParticlesPainterComponent({
+class ParticlesPainterInOutComponent extends StatefulWidget {
+  const ParticlesPainterInOutComponent({
     Key? key,
      required this.colors,
      required this.endX,
      required this.endY,
      required this.initX,
      required this.initY,
+     required this.spray,
   }) : super(key: key);
 
   final List<Color> colors;
@@ -23,13 +24,15 @@ class ParticlesPainterComponent extends StatefulWidget {
   final double initY;
   final double endX;
   final double endY;
+  final double spray;
 
   @override
-  ParticlesPainterComponentState createState() => 
-  ParticlesPainterComponentState();
+  ParticlesPainterInOutComponentState createState() => 
+  ParticlesPainterInOutComponentState();
 }
 
-class ParticlesPainterComponentState extends State<ParticlesPainterComponent> {
+class ParticlesPainterInOutComponentState 
+  extends State<ParticlesPainterInOutComponent> {
   /// Notifies the animation about the currently elapsed time.
   late ValueNotifier<double> _time;
 
@@ -63,6 +66,7 @@ class ParticlesPainterComponentState extends State<ParticlesPainterComponent> {
 
   @override
   Widget build(BuildContext context) {
+
     return CustomPaint(
       size: MediaQuery.of(context).size,
       willChange: true,
@@ -72,11 +76,12 @@ class ParticlesPainterComponentState extends State<ParticlesPainterComponent> {
         particleCount: 100,
         particleSize: 12,
         blackHoleRadius: 10,
-        sprayRadius: 230,
+        sprayRadius: widget.spray,
         initY: widget.initY,
         initX: widget.initX,
         endX: widget.endX,
         endY: widget.endY,
+        done: _timer.tick == 500,
       ),
     );
   }
@@ -96,6 +101,7 @@ class Painter extends CustomPainter {
     required this.initX,
     required this.endY,
     required this.initY,
+    required this.done,
   }) : super(repaint: time);
   final ValueListenable<double> time;
   final List<Color> colors;
@@ -107,6 +113,7 @@ class Painter extends CustomPainter {
   final double initY;
   final double endX;
   final double endY;
+  final bool done;
 
   /// Position of the particles.
   // double? _x, _y;
@@ -146,7 +153,7 @@ class Painter extends CustomPainter {
     }
     for (var i = 0; i < _particles.length; i++) {
       //Make Cool Animation
-      _particles[i][4] = hypot(endX -_particles[i][0], endY -_particles[i][1]);
+      _particles[i][4] = hypot( -_particles[i][0], endY -_particles[i][1]);
       //Soft Animation
       // _particles[i][4] = hypot(endX , endY);
       final c = pow(_particles[i][4], 2) / 250;

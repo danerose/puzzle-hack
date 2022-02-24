@@ -1,6 +1,7 @@
 //Flutter
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/view/components/sakura_leaves_animation_component.dart';
 
 
 //Models
@@ -90,7 +91,16 @@ class SakuraPuzzleLayoutDelegate extends PuzzleLayoutDelegate {
 
   @override
   Widget backgroundBuilder(PuzzleState state) {
-    return const SizedBox();
+    return  ResponsiveLayoutBuilder(
+      small: (BuildContext _,Widget? child) => child!,
+      medium: (BuildContext _,Widget? child) => child!,
+      large: (BuildContext _,Widget? child) => child!,
+      child: (_){
+        return SakuraLeavesAnimation(
+          size: _,
+        );
+      },
+    );
   }
 
   @override

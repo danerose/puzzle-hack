@@ -8,14 +8,15 @@ import 'package:flutter/foundation.dart';
 //Flutter
 
 
-class ParticlesPainterComponent extends StatefulWidget {
-  const ParticlesPainterComponent({
+class ParticlesPainterOutInComponent extends StatefulWidget {
+  const ParticlesPainterOutInComponent({
     Key? key,
      required this.colors,
      required this.endX,
      required this.endY,
      required this.initX,
      required this.initY,
+     required this.spray,
   }) : super(key: key);
 
   final List<Color> colors;
@@ -23,13 +24,15 @@ class ParticlesPainterComponent extends StatefulWidget {
   final double initY;
   final double endX;
   final double endY;
+  final double spray;
 
   @override
-  ParticlesPainterComponentState createState() => 
-  ParticlesPainterComponentState();
+  ParticlesPainterOutInComponentState createState() => 
+  ParticlesPainterOutInComponentState();
 }
 
-class ParticlesPainterComponentState extends State<ParticlesPainterComponent> {
+class ParticlesPainterOutInComponentState 
+  extends State<ParticlesPainterOutInComponent> {
   /// Notifies the animation about the currently elapsed time.
   late ValueNotifier<double> _time;
 
@@ -72,7 +75,7 @@ class ParticlesPainterComponentState extends State<ParticlesPainterComponent> {
         particleCount: 100,
         particleSize: 12,
         blackHoleRadius: 10,
-        sprayRadius: 230,
+        sprayRadius: widget.spray,
         initY: widget.initY,
         initX: widget.initX,
         endX: widget.endX,
@@ -125,8 +128,8 @@ class Painter extends CustomPainter {
     for (var i = 0; i < particleCount; i++) {
       final angle = pi * 2 / particleCount * i;
       _particles.add([
-        initX,
-        initY,
+        size.height + 100,
+        size.height + 100,
         sin(angle) * sprayRadius * random.nextDouble(),
         cos(angle) * sprayRadius * random.nextDouble(),
         0,

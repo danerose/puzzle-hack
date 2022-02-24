@@ -56,6 +56,7 @@ class ParticlesBloc extends Bloc<ParticlesEvent, ParticlesState>{
   ){
     emit(state.copyWith(
       animate: event.animate,
+      particleAnimation: event.particleAnimation,
       initX: event.initX,
       initY: event.initY,
       endX: event.initX + 10,
@@ -71,6 +72,7 @@ class ParticlesBloc extends Bloc<ParticlesEvent, ParticlesState>{
   ){
     emit(state.copyWith(
       animate: event.animate,
+      particleAnimation: event.particleAnimation,
       initX: state.lastX,
       initY: state.lastY,
       endX: event.endX,

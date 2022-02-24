@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:puzzle_hack/core/bloc/particles/particles_state.dart';
 
 
 abstract class ParticlesEvent extends Equatable{
@@ -42,11 +43,13 @@ class ParticlesAnimation extends ParticlesEvent {
 class ParticlesInitAnimation extends ParticlesEvent {
   const ParticlesInitAnimation({
     required this.animate, 
+    required this.particleAnimation,
     required this.initX, 
     required this.initY, 
   });
 
   final bool animate;
+  final ParticleAnimation particleAnimation;
   final double initX;
   final double initY;
 
@@ -62,11 +65,13 @@ class ParticlesInitAnimation extends ParticlesEvent {
 class ParticlesEndAnimation extends ParticlesEvent {
   const ParticlesEndAnimation({
     required this.animate, 
+    required this.particleAnimation,
     required this.endX, 
     required this.endY,
   });
 
   final bool animate;
+  final ParticleAnimation particleAnimation;
   final double endX;
   final double endY; 
 

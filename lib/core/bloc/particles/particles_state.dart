@@ -1,8 +1,15 @@
 import 'package:equatable/equatable.dart';
 
+enum ParticleAnimation {
+  animateInOut,
+  animateOutIn,
+  animateUnknown
+}
+
 class ParticlesState extends Equatable {
   const ParticlesState({
     this.animate = false,
+    this.particleAnimation= ParticleAnimation.animateUnknown,
     this.initX = 0,
     this.initY = 0,
     this.endX = 0,
@@ -12,6 +19,7 @@ class ParticlesState extends Equatable {
   });
 
   final bool animate;
+  final ParticleAnimation particleAnimation;
   final double initX;
   final double initY;
   final double endX;
@@ -22,6 +30,7 @@ class ParticlesState extends Equatable {
 
   ParticlesState copyWith({
     bool? animate,
+    ParticleAnimation? particleAnimation,
     double? initX,
     double? initY,
     double? endX,
@@ -31,6 +40,7 @@ class ParticlesState extends Equatable {
   }) {
     return ParticlesState(
       animate: animate ?? this.animate,
+      particleAnimation: particleAnimation ?? this.particleAnimation,
       initX: initX ?? this.initX,
       initY: initY ?? this.initY,
       endX: endX ?? this.endX,
@@ -43,6 +53,7 @@ class ParticlesState extends Equatable {
   @override
   List<Object?> get props => [
     animate,
+    particleAnimation,
     initX,
     initY,
     endX,

@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 //Dependencies
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:puzzle_hack/core/bloc/particles/particles_state.dart';
 
 //Bloc
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_bloc.dart';
@@ -123,14 +124,15 @@ class SakuraPuzzleTileComponentState extends State<SakuraPuzzleTileComponent>
             ),
             duration: pState.status == SakuraPuzzleStatus.loading
               ? const Duration(milliseconds: 800)
-              : const Duration(milliseconds: 370),
+              : const Duration(milliseconds: 800),
             curve: Curves.easeInOut,
             onEnd: (){
               final endBox = _key.currentContext?.findRenderObject() as RenderBox?;
               final endPos = endBox?.localToGlobal(Offset.zero);
               context.read<ParticlesBloc>().add(
                 ParticlesEndAnimation(
-                  animate: true, 
+                  animate: pState.status == SakuraPuzzleStatus.started,
+                  particleAnimation: ParticleAnimation.animateOutIn,
                   endX: endPos?.dx ?? 100, 
                   endY: endPos?.dy ?? 100, 
                 ),
@@ -182,7 +184,8 @@ class SakuraPuzzleTileComponentState extends State<SakuraPuzzleTileComponent>
                             log('InitPos $initPos');
                             context.read<ParticlesBloc>().add(
                               ParticlesInitAnimation(
-                                animate: false, 
+                                animate: true,
+                                particleAnimation: ParticleAnimation.animateInOut,
                                 initX: initPos?.dx ?? 100, 
                                 initY: initPos?.dy ?? 100, 
                               ),
@@ -204,46 +207,10 @@ class SakuraPuzzleTileComponentState extends State<SakuraPuzzleTileComponent>
                             key: _key,
                           ),
                         ),
-                        // child: Center(
-                        //   child: Text(TextHelper.puzzleTileLabelText(
-                        //     widget.tile.value.toString(),
-                        //     widget.tile.currentPosition.x.toString(),
-                        //     widget.tile.currentPosition.y.toString(),
-                        //   ),),
-                        // ),
                       ),
                     ),
                   ),
                 ),
-                // child: ScaleTransition(
-                //   key: Key('sakura_puzzle_tile_scale_${widget.tile.value}'),
-                //   scale: _scale,
-                //   child: IconButton(
-                //     padding: EdgeInsets.zero,
-                //     onPressed: state.status == SakuraPuzzleStatus.started 
-                //       && puzzleIncomplete
-                //       ? () {
-                //           context.read<PuzzleBloc>().add(
-                //             TileTapped(widget.tile),
-                //           );
-                //           unawaited(_audioPlayer?.replay());
-                //         }
-                //       : null,
-                //     icon: GlassMorphismWidget(
-                //       start: 1,
-                //       end: 0.1,
-                //       child: Container(
-                //         width: _TileSize.large,
-                //         height: _TileSize.large,
-                //         child: Text(TextHelper.puzzleTileLabelText(
-                //           widget.tile.value.toString(),
-                //           widget.tile.currentPosition.x.toString(),
-                //           widget.tile.currentPosition.y.toString(),
-                //         ),),
-                //       ),
-                //     ),
-                //   ),
-                // ),
               ),
             ),
           );

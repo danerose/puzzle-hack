@@ -10,15 +10,12 @@ import 'package:flutter/material.dart';
 //Dependencies
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/view/widgets/balls_animation_widget.dart';
 
 //Bloc
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_bloc.dart';
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_event.dart';
 import 'package:puzzle_hack/core/bloc/puzzle/puzzle_state.dart';
 
-import 'package:puzzle_hack/core/bloc/particles/particles_bloc.dart';
-import 'package:puzzle_hack/core/bloc/particles/particles_event.dart';
 
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/bloc/puzzle/balls_puzzle_bloc.dart';
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/bloc/puzzle/balls_puzzle_state.dart';
@@ -33,6 +30,7 @@ import 'package:puzzle_hack/core/theme/puzzle_theme_animations.dart';
 //Models
 import 'package:puzzle_hack/core/data/models/tile/tile.dart';
 
+import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/view/widgets/balls_animation_widget.dart';
 //Extensions
 import 'package:puzzle_hack/core/utils/extensions/audio_player_extension.dart';
 import 'package:puzzle_hack/core/widget/audio/audio_control_listener.dart';
@@ -126,17 +124,6 @@ class BallsPuzzleTileComponentState extends State<BallsPuzzleTileComponent>
               ? const Duration(milliseconds: 800)
               : const Duration(milliseconds: 370),
             curve: Curves.easeInOut,
-            onEnd: (){
-              final endBox = _key.currentContext?.findRenderObject() as RenderBox?;
-              final endPos = endBox?.localToGlobal(Offset.zero);
-              context.read<ParticlesBloc>().add(
-                ParticlesEndAnimation(
-                  animate: true, 
-                  endX: endPos?.dx ?? 100, 
-                  endY: endPos?.dy ?? 100, 
-                ),
-              );
-            },
             child: ResponsiveLayoutBuilder(
               small: (_, child) => SizedBox.square(
                 key: Key('balls_puzzle_tile_small_${widget.tile.value}'),
