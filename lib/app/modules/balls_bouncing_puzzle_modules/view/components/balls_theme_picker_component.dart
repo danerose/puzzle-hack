@@ -127,7 +127,7 @@ State<BallsThemePickerComponent> {
                             child: GlassMorphismWidget(
                               start: 1,
                               end: 0.1,
-                              colorStart: theme.themeData.colorScheme.secondaryVariant,
+                              colorStart: theme.themeData.colorScheme.secondaryContainer,
                               child: BallsAnimationWidget(
                                 changeOnLimit: false,
                                 color: 0,

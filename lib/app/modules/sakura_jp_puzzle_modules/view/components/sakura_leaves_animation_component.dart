@@ -50,9 +50,9 @@ class SakuraLeavesAnimation extends StatelessWidget {
                       ParticlesPainterComponent(
                         colors: [
                           Theme.of(context).colorScheme.primary,
-                          Theme.of(context).colorScheme.primaryVariant,
+                          Theme.of(context).colorScheme.primaryContainer,
                           Theme.of(context).colorScheme.secondary,
-                          Theme.of(context).colorScheme.secondaryVariant,
+                          Theme.of(context).colorScheme.secondaryContainer,
                         ],
                         initX: particlesState.initX, 
                         initY: particlesState.initY, 

@@ -23,13 +23,10 @@ import 'package:puzzle_hack/core/components/common/flutter_logo_component.dart';
 
 //Widget
 import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/view/widgets/balls_timer_widget.dart';
+import 'package:puzzle_hack/app/modules/balls_bouncing_puzzle_modules/view/components/balls_background_animation_component.dart';
 
 class BallsScoreComponent extends StatelessWidget {
   const BallsScoreComponent({Key? key}) : super(key: key);
-
-  static const _smallImageOffset = Offset(124, 36);
-  static const _mediumImageOffset = Offset(215, -47);
-  static const _largeImageOffset = Offset(215, -47);
 
   @override
   Widget build(BuildContext context) {
@@ -47,23 +44,8 @@ class BallsScoreComponent extends StatelessWidget {
             color: Theme.of(context).backgroundColor,
             child: Stack(
               children: [
-                Positioned(
-                  left: currentSize == ResponsiveLayoutSize.large
-                    ? _largeImageOffset.dx
-                    : (currentSize == ResponsiveLayoutSize.medium
-                        ? _mediumImageOffset.dx
-                        : _smallImageOffset.dx
-                  ),
-                  top: currentSize == ResponsiveLayoutSize.large
-                    ? _largeImageOffset.dy
-                    : (currentSize == ResponsiveLayoutSize.medium
-                        ? _mediumImageOffset.dy
-                        : _smallImageOffset.dy
-                  ),
-                  child: Icon(
-                    Icons.check_box,
-                    size:currentSize == ResponsiveLayoutSize.small ? 74.0: 37.0,
-                  ),
+                const Positioned(
+                  child: BallsBackgroundAnimationComponent(),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(24),
@@ -71,7 +53,7 @@ class BallsScoreComponent extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const FlutterLogoComponent(
-                        height: 18,
+                        height: 24,
                         isColored: false,
                       ),
                       const ResponsiveGap(
@@ -86,7 +68,12 @@ class BallsScoreComponent extends StatelessWidget {
                         child: const AnimatedDefaultTextStyle(
                           style: TextStyle(),
                           duration: PuzzleThemeAnimationDuration.textStyle,
-                          child: Text('Puzzle challenge completed'),
+                          child: Text('Puzzle challenge completed',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
                       const ResponsiveGap(
@@ -98,7 +85,12 @@ class BallsScoreComponent extends StatelessWidget {
                         key: Key('balls_score_well_done'),
                         style: TextStyle(),
                         duration: PuzzleThemeAnimationDuration.textStyle,
-                        child: Text('Well done.\nCongrats!'),
+                        child: Text('Well done.\nCongrats!',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                       const ResponsiveGap(
                         small: 24,
@@ -109,7 +101,12 @@ class BallsScoreComponent extends StatelessWidget {
                         key: Key('balls_score_score'),
                         style: TextStyle(),
                         duration: PuzzleThemeAnimationDuration.textStyle,
-                        child: Text('Score'),
+                        child: Text('Score',
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                          ),                        
+                        ),
                       ),
                       const ResponsiveGap(
                         small: 8,

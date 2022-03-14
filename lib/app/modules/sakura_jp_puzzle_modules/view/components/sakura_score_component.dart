@@ -23,13 +23,10 @@ import 'package:puzzle_hack/core/components/common/flutter_logo_component.dart';
 
 //Widget
 import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/view/widgets/sakura_timer_widget.dart';
+import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/view/components/sakura_tree_animation_background_component.dart';
 
 class SakuraScoreComponent extends StatelessWidget {
   const SakuraScoreComponent({Key? key}) : super(key: key);
-
-  static const _smallImageOffset = Offset(124, 36);
-  static const _mediumImageOffset = Offset(215, -47);
-  static const _largeImageOffset = Offset(215, -47);
 
   @override
   Widget build(BuildContext context) {
@@ -48,21 +45,11 @@ class SakuraScoreComponent extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  left: currentSize == ResponsiveLayoutSize.large
-                    ? _largeImageOffset.dx
-                    : (currentSize == ResponsiveLayoutSize.medium
-                        ? _mediumImageOffset.dx
-                        : _smallImageOffset.dx
-                  ),
-                  top: currentSize == ResponsiveLayoutSize.large
-                    ? _largeImageOffset.dy
-                    : (currentSize == ResponsiveLayoutSize.medium
-                        ? _mediumImageOffset.dy
-                        : _smallImageOffset.dy
-                  ),
-                  child: Icon(
-                    Icons.check_box,
-                    size:currentSize == ResponsiveLayoutSize.small ? 74.0: 37.0,
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: currentSize == ResponsiveLayoutSize.small
+                     ? 374.0 : 355.0,
+                    child: const SakuraTreeAnimation(),
                   ),
                 ),
                 Padding(
@@ -71,7 +58,7 @@ class SakuraScoreComponent extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const FlutterLogoComponent(
-                        height: 18,
+                        height: 24,
                         isColored: false,
                       ),
                       const ResponsiveGap(
@@ -86,7 +73,12 @@ class SakuraScoreComponent extends StatelessWidget {
                         child: const AnimatedDefaultTextStyle(
                           style: TextStyle(),
                           duration: PuzzleThemeAnimationDuration.textStyle,
-                          child: Text('Puzzle challenge completed'),
+                          child: Text('Puzzle challenge completed',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
                       const ResponsiveGap(
@@ -98,7 +90,12 @@ class SakuraScoreComponent extends StatelessWidget {
                         key: Key('sakura_score_well_done'),
                         style: TextStyle(),
                         duration: PuzzleThemeAnimationDuration.textStyle,
-                        child: Text('Well done.\nCongrats!'),
+                        child: Text('Well done.\nCongrats!',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                       const ResponsiveGap(
                         small: 24,
@@ -109,7 +106,12 @@ class SakuraScoreComponent extends StatelessWidget {
                         key: Key('sakura_score_score'),
                         style: TextStyle(),
                         duration: PuzzleThemeAnimationDuration.textStyle,
-                        child: Text('Score'),
+                        child: Text('Score',
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                          ),                        
+                        ),
                       ),
                       const ResponsiveGap(
                         small: 8,

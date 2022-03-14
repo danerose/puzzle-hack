@@ -185,9 +185,9 @@ class BallsPuzzleTileComponentState extends State<BallsPuzzleTileComponent>
                               size: _ == ResponsiveLayoutSize.small ? 5 : 10,
                               colors: [
                                 Theme.of(context).colorScheme.primary,
-                                Theme.of(context).colorScheme.primaryVariant,
+                                Theme.of(context).colorScheme.primaryContainer,
                                 Theme.of(context).colorScheme.secondary,
-                                Theme.of(context).colorScheme.secondaryVariant,
+                                Theme.of(context).colorScheme.secondaryContainer,
                               ],
                             ),
                             Center(

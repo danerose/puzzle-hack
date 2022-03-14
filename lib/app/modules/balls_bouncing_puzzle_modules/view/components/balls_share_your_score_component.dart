@@ -47,12 +47,15 @@ class BallsShareYourScoreComponent extends StatelessWidget {
                     : CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Share your score!',
+                      'Thank you for playing!',
                       key: const Key('balls_share_your_score_title'),
                       textAlign:  currentSize == ResponsiveLayoutSize.large
                         ? TextAlign.left
                         : TextAlign.center,
-                      style: const TextStyle(),
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const Gap(16),
                     SizedBox(
@@ -61,13 +64,16 @@ class BallsShareYourScoreComponent extends StatelessWidget {
                         : (currentSize == ResponsiveLayoutSize.medium 
                         ? 434.0 : 307.0),
                       child: Text(
-                        'Share this puzzle to challenge your friends and be ' 
-                        'sure to check out the Flutter Puzzle Hack.',
+                        'If you want, you can follow me on Twitter, i will'
+                        ' publish the code there after the results',
                         key: const Key('balls_share_your_score_message'),
                         textAlign: currentSize == ResponsiveLayoutSize.large
                           ? TextAlign.left
                           : TextAlign.center,
-                        style: const TextStyle(),
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],
@@ -90,7 +96,7 @@ class BallsShareYourScoreComponent extends StatelessWidget {
                   children: const [
                     BallsTwitterButton(),
                     Gap(16),
-                    BallsFacebookButton(),
+                    // BallsGitHubButton(),
                   ],
                 ),
               ),

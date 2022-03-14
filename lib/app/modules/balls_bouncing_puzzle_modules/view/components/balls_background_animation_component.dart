@@ -28,9 +28,9 @@ class BallsBackgroundAnimationComponent extends StatelessWidget {
               : Random().nextInt(99).toDouble() * 2,
               colors: [
                 Theme.of(context).colorScheme.primary,
-                Theme.of(context).colorScheme.primaryVariant,
+                Theme.of(context).colorScheme.primaryContainer,
                 Theme.of(context).colorScheme.secondary,
-                Theme.of(context).colorScheme.secondaryVariant,
+                Theme.of(context).colorScheme.secondaryContainer,
               ], 
               color: Random().nextInt(4), 
               x: Random().nextInt(99).toDouble() * Random().nextInt(50), 
@@ -44,9 +44,9 @@ class BallsBackgroundAnimationComponent extends StatelessWidget {
               : Random().nextInt(99).toDouble() +  50,
               colors: [
                 Theme.of(context).colorScheme.primary,
-                Theme.of(context).colorScheme.primaryVariant,
+                Theme.of(context).colorScheme.primaryContainer,
                 Theme.of(context).colorScheme.secondary,
-                Theme.of(context).colorScheme.secondaryVariant,
+                Theme.of(context).colorScheme.secondaryContainer
               ], 
               color: Random().nextInt(4), 
               x: Random().nextInt(99).toDouble() * 4, 
@@ -60,9 +60,9 @@ class BallsBackgroundAnimationComponent extends StatelessWidget {
               : Random().nextInt(99).toDouble() +  50,
               colors: [
                 Theme.of(context).colorScheme.primary,
-                Theme.of(context).colorScheme.primaryVariant,
+                Theme.of(context).colorScheme.primaryContainer,
                 Theme.of(context).colorScheme.secondary,
-                Theme.of(context).colorScheme.secondaryVariant,
+                Theme.of(context).colorScheme.secondaryContainer,
               ], 
               color: Random().nextInt(4), 
               x: Random().nextInt(99).toDouble() * 4, 

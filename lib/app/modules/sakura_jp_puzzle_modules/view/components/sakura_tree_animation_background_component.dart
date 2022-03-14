@@ -16,7 +16,7 @@ import 'package:puzzle_hack/app/modules/sakura_jp_puzzle_modules/bloc/theme/saku
 class SakuraTreeAnimation extends StatefulWidget {
   const SakuraTreeAnimation({
     Key? key,
-    required this.size,
+    this.size = ResponsiveLayoutSize.large,
   }) : super(key: key);
 
   final ResponsiveLayoutSize size;

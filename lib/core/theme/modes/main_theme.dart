@@ -11,9 +11,9 @@ class MainThemeData {
     scaffoldBackgroundColor: const Color(0xFFDFD5C7),
     colorScheme: const ColorScheme(
       primary: Color(0xFF790000), 
-      primaryVariant:  Color(0xFFCB242B), 
+      primaryContainer:  Color(0xFFCB242B), 
       secondary: Color(0xFFE15E6B), 
-      secondaryVariant: Color(0xFFFCB9BF), 
+      secondaryContainer: Color(0xFFFCB9BF), 
       surface: Color(0xFFCCCCCC), 
       background: Color(0xFFDFD5C7), 
       error: Color(0xFFFF0000), 

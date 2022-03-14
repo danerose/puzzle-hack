@@ -20,16 +20,12 @@ import 'package:puzzle_hack/core/widget/audio/audio_control_listener.dart';
 
 
 /// The url to share for this Flutter Puzzle challenge.
-const _shareUrl = 'https://flutterhack.devpost.com/';
-
 
 class BallsTwitterButton extends StatelessWidget {
   const BallsTwitterButton({Key? key}) : super(key: key);
 
   String _twitterShareUrl(BuildContext context) {
-    const shareText = 'Just solved the #FlutterPuzzleHack! Check it out ↓';
-    final encodedShareText = Uri.encodeComponent(shareText);
-    return 'https://twitter.com/intent/tweet?url=$_shareUrl&text=$encodedShareText';
+    return 'https://twitter.com/AlexisAvalencia';
   }
 
   @override
@@ -49,27 +45,25 @@ class BallsTwitterButton extends StatelessWidget {
 }
 
 
-class BallsFacebookButton extends StatelessWidget {
-  const BallsFacebookButton({Key? key}) : super(key: key);
+class BallsGitHubButton extends StatelessWidget {
+  const BallsGitHubButton({Key? key}) : super(key: key);
 
-  String _facebookShareUrl(BuildContext context) {
-    const shareText = 'Just solved the #FlutterPuzzleHack! Check it out ↓';
-    final encodedShareText = Uri.encodeComponent(shareText);
-    return 'https://www.facebook.com/sharer.php?u=$_shareUrl&quote=$encodedShareText';
+  String _gitHubShareUrl(BuildContext context) {
+    return 'https://github.com/Shmuell';
   }
 
   @override
   Widget build(BuildContext context) {
     return BallsShareButton(
-      title: 'Facebook',
+      title: 'GitHub',
       icon: SvgPicture.asset(
-        'assets/icons/icon_facebook.svg',
+        'assets/icons/icon_github.svg',
         width: 6.56,
         height: 13.13,
         color: Colors.white,
       ),
-      color: const Color(0xFF0468D7),
-      onPressed: () => LinkRepository.openLink(_facebookShareUrl(context)),
+      color: Colors.black,
+      onPressed: () => LinkRepository.openLink(_gitHubShareUrl(context)),
     );
   }
 }
