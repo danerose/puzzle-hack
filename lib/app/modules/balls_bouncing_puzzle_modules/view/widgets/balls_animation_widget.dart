@@ -6,6 +6,8 @@ import 'dart:math';
 //Flutter
 import 'package:flutter/material.dart';
 
+import 'package:puzzle_hack/core/components/painter/balls_painter_component.dart';
+
 class BallsAnimationWidget extends StatefulWidget {
   const BallsAnimationWidget({
     Key? key,
@@ -84,7 +86,7 @@ class BouncingFlutterLogoState extends State<BallsAnimationWidget> {
   void _scheduleUpdate() {
     _updateTimer = Timer(
       // Lock the update rate, no matter the frame rate.
-      const Duration(microseconds: 1e6 ~/ 60),
+      const Duration(microseconds: 1e6 ~/ 30),
       _update,
     );
   }
@@ -93,20 +95,17 @@ class BouncingFlutterLogoState extends State<BallsAnimationWidget> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        AnimatedPositioned(
-          top: _y,
-          left:  _x ,
-          duration: const Duration(microseconds: 1e6 ~/ 60),
-          child: Container(
-            key: _globalKey,
-            width:  widget.size ,
-            height: widget.size,
-            decoration: BoxDecoration(
-              color: widget.colors[_color],
-              borderRadius: BorderRadius.circular(1000),
-            ),
+        CustomPaint(
+          key: _globalKey,
+          size: widget.globalKey.currentContext?.size ?? Size.zero,
+          willChange: true,
+          painter: BallsPainter(
+            x: _x, 
+            y: _y, 
+            s: widget.size, 
+            c: widget.colors[_color],
           ),
-        ),
+        )
       ],
     );
   }

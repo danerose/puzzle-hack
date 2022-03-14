@@ -52,7 +52,7 @@ class _BallsCountdownComponentState extends State<BallsCountdownComponent> {
   void initState() {
     super.initState();
     _audioPlayer = widget._audioPlayerFactory()
-      ..setAsset('assets/audio/shuffle.mp3');
+      ..setAsset('assets/audio/balls_counter.mp3');
   }
 
   @override

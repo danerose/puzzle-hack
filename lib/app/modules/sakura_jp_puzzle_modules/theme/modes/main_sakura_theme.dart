@@ -16,7 +16,7 @@ class MainSakuraTheme extends SakuraTheme{
   }
 
   @override
-  String get audioAsset => 'assets/audio/skateboard.mp3';
+  String get audioAsset => 'assets/audio/sakura_theme.mp3';
 
     @override
   String get themeAsset => 'assets/sakura/main_sakura.png';

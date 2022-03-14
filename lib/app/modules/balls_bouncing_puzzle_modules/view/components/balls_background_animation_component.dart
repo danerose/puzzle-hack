@@ -24,7 +24,7 @@ class BallsBackgroundAnimationComponent extends StatelessWidget {
             BallsAnimationWidget(
               globalKey: GlobalKey(),
               size: currentSize == ResponsiveLayoutSize.large 
-              ? Random().nextInt(99).toDouble() *  6 
+              ? Random().nextInt(99).toDouble() * 6 
               : Random().nextInt(99).toDouble() * 2,
               colors: [
                 Theme.of(context).colorScheme.primary,
@@ -40,8 +40,8 @@ class BallsBackgroundAnimationComponent extends StatelessWidget {
             BallsAnimationWidget(
               globalKey: GlobalKey(),
               size: currentSize == ResponsiveLayoutSize.large 
-              ? Random().nextInt(99).toDouble() *  4 
-              : Random().nextInt(99).toDouble() +  100,
+              ? Random().nextInt(99).toDouble() *  10 
+              : Random().nextInt(99).toDouble() +  50,
               colors: [
                 Theme.of(context).colorScheme.primary,
                 Theme.of(context).colorScheme.primaryVariant,
@@ -56,8 +56,8 @@ class BallsBackgroundAnimationComponent extends StatelessWidget {
             BallsAnimationWidget(
               globalKey: GlobalKey(),
               size: currentSize == ResponsiveLayoutSize.large 
-              ? Random().nextInt(99).toDouble() *  4 
-              : Random().nextInt(99).toDouble() +  100,
+              ? Random().nextInt(99).toDouble() *  10 
+              : Random().nextInt(99).toDouble() +  50,
               colors: [
                 Theme.of(context).colorScheme.primary,
                 Theme.of(context).colorScheme.primaryVariant,

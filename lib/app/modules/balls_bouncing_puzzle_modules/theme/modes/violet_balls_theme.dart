@@ -16,7 +16,7 @@ class VioletBallsTheme extends BallsTheme{
   }
 
   @override
-  String get audioAsset => 'assets/audio/skateboard.mp3';
+  String get audioAsset => 'assets/audio/balls_theme.mp3';
   
   @override
   String get themeAsset => '';

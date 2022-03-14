@@ -184,7 +184,7 @@ class SakuraPuzzleTileComponentState extends State<SakuraPuzzleTileComponent>
                             log('InitPos $initPos');
                             context.read<ParticlesBloc>().add(
                               ParticlesInitAnimation(
-                                animate: true,
+                                animate: false,
                                 particleAnimation: ParticleAnimation.animateInOut,
                                 initX: initPos?.dx ?? 100, 
                                 initY: initPos?.dy ?? 100, 

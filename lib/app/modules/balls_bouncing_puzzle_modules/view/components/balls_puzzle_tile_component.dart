@@ -110,7 +110,7 @@ class BallsPuzzleTileComponentState extends State<BallsPuzzleTileComponent>
   Widget build(BuildContext context) {
     final puzzleIncomplete = context.select((PuzzleBloc bloc) => bloc.state.puzzleStatus) == PuzzleStatus.incomplete;  
     final size = widget.state.puzzle.getDimension();
-    final balls =  widget.tile.value <= 5 ? 1 : widget.tile.value <= 10  ? 2 : 3;
+    // final balls =  widget.tile.value <= 5 ? 1 : widget.tile.value <= 10  ? 2 : 3;
     return AudioControlListener(
       audioPlayer: _audioPlayer,
       child: BlocBuilder<BallsPuzzleBloc, BallsPuzzleState>(
@@ -171,18 +171,18 @@ class BallsPuzzleTileComponentState extends State<BallsPuzzleTileComponent>
                           }
                         : null,
                         child: GlassMorphismWidget(
-                        start: 1,
-                        end: 0.1,
-                        child: Stack(
-                          children: [
-                            for (var i = 0; i < balls; i++)
+                          start: 1,
+                          end: 0.1,
+                          child: Stack(
+                            children: [
+                            for (var i = 0; i < widget.tile.value; i++)
                             BallsAnimationWidget(
                               changeOnLimit: false,
                               globalKey: _key, 
                               x: Random().nextInt(99).toDouble() * 2, 
-                              y: Random().nextInt(99).toDouble() * 2,
+                              y: Random().nextInt(99).toDouble() * 5,
                               color: Random().nextInt(4),
-                              size: _ == ResponsiveLayoutSize.small ? 10 : 20,
+                              size: _ == ResponsiveLayoutSize.small ? 5 : 10,
                               colors: [
                                 Theme.of(context).colorScheme.primary,
                                 Theme.of(context).colorScheme.primaryVariant,
@@ -193,6 +193,10 @@ class BallsPuzzleTileComponentState extends State<BallsPuzzleTileComponent>
                             Center(
                               child: Text(
                                 widget.tile.value.toString(),
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                ),
                               ),
                             ),
                           ],

@@ -72,7 +72,7 @@ class ParticlesPainterComponentState extends State<ParticlesPainterComponent> {
         particleCount: 100,
         particleSize: 12,
         blackHoleRadius: 10,
-        sprayRadius: 230,
+        sprayRadius: 50,
         initY: widget.initY,
         initX: widget.initX,
         endX: widget.endX,

@@ -52,7 +52,7 @@ class _SakuraCountdownComponentState extends State<SakuraCountdownComponent> {
   void initState() {
     super.initState();
     _audioPlayer = widget._audioPlayerFactory()
-      ..setAsset('assets/audio/shuffle.mp3');
+      ..setAsset('assets/audio/sakura_counter.mp3');
   }
 
   @override

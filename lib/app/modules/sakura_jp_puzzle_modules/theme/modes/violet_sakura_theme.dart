@@ -16,7 +16,7 @@ class VioletSakuraTheme extends SakuraTheme{
   }
 
   @override
-  String get audioAsset => 'assets/audio/skateboard.mp3';
+  String get audioAsset => 'assets/audio/sakura_theme.mp3';
 
   @override
   String get themeAsset => 'assets/sakura/violet_sakura.png';
