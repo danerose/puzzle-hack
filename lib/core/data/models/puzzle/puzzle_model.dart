@@ -7,7 +7,7 @@ import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 
 //Models
-import 'package:puzzle_hack/core/data/models/puzzle/tile_model.dart';
+import 'package:puzzle_hack/core/data/models/tile/tile.dart';
 
 // A 3x3 puzzle board visualization:
 //
@@ -34,11 +34,8 @@ import 'package:puzzle_hack/core/data/models/puzzle/tile_model.dart';
 // puzzle. As seen from example above, tile 2's correct position is (2, 1).
 // The current position is where the tile is currently located on the board.
 
-/// {@template puzzle}
-/// Model for a puzzle.
-/// {@endtemplate}
+
 class Puzzle extends Equatable {
-  /// {@macro puzzle}
   const Puzzle({required this.tiles});
 
   /// List of [Tile]s representing the puzzle's current arrangement.

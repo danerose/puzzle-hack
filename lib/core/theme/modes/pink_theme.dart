@@ -1,32 +1,28 @@
+//Flutter
 import 'package:flutter/material.dart';
-import 'package:puzzle_hack/core/theme/theme.dart';
 
+//Model
 
-class PinkThemeData extends CustomTheme {
+class PinkThemeData{
   const PinkThemeData() :super ();
-
-  @override
-  ThemeData get themeData => ThemeData(
-  brightness: Brightness.light,
-  backgroundColor: Colors.pink,
-  scaffoldBackgroundColor: Colors.lime,
-  colorScheme: const ColorScheme(
-    primary: Colors.blueGrey, 
-    primaryVariant: Colors.blueAccent, 
-    secondary: Colors.lightBlue, 
-    secondaryVariant: Colors.lightBlueAccent, 
-    surface: Colors.deepPurple, 
-    background: Colors.pink, 
-    error: Colors.red, 
-    onPrimary: Colors.yellow, 
-    onSecondary: Colors.pink, 
-    onSurface: Colors.lime, 
-    onBackground: Colors.green, 
-    onError: Colors.redAccent, 
+  static ThemeData  themeData = ThemeData(
     brightness: Brightness.light,
-  ),
-);
-
-  @override
-  List<Object?> get props => [themeData];
+    backgroundColor: const Color(0xFFEBE2ED),
+    scaffoldBackgroundColor: const  Color(0xFFEBE2ED),
+    colorScheme: const ColorScheme(
+      primary: Color(0xFFA05379), 
+      primaryContainer: Color(0xFFFEB5D8), 
+      secondary: Color(0xFFFF99E4), 
+      secondaryContainer: Color(0xFFFFFFFF), 
+      surface: Colors.deepPurple, 
+      background: Colors.pink, 
+      error: Colors.red, 
+      onPrimary: Colors.black, 
+      onSecondary: Color(0xFFE92E61), 
+      onSurface: Colors.deepPurple, 
+      onBackground: Colors.green, 
+      onError: Colors.redAccent, 
+      brightness: Brightness.light,
+    ),
+  );
 }
